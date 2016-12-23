@@ -1,5 +1,5 @@
 # gamepad2usb
-Gamepad2usb based on ["V-Usb"](https://www.obdev.at/products/vusb/index.html) project.
+[Gamepad2usb](https://vk.com/gamepad2usb) based on ["V-Usb"](https://www.obdev.at/products/vusb/index.html) project.
 Also, ["gamepad2usb"](https://vk.com/gamepad2usb) based on ["USBJoy"](http://vusb.wikidot.com/project:usbjoy) Sergey Ryumik.
 
 This project is a simple gamepad.
