@@ -1,0 +1,20 @@
+G04 DipTrace 3.0.0.2*
+G04 bottom_mask_gamepad2usb.gbr*
+%MOMM*%
+G04 #@! TF.FileFunction,Soldermask,Bot*
+G04 #@! TF.Part,Single*
+%ADD46R,2.2X4.2*%
+%FSLAX35Y35*%
+G04*
+G71*
+G90*
+G75*
+G01*
+G04 BotMask*
+%LPD*%
+D46*
+X-2476707Y-1095490D3*
+X-2222707D3*
+X-1968707D3*
+X-1714707D3*
+M02*
