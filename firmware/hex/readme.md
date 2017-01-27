@@ -20,4 +20,4 @@ I'm using Linux and avrdude. <br />
 In linux just do that:
   1. chmod +x program_atmega8a-au<br />
   2. ./program_atmega8a-au<br />
-I'm have no expirience in windows :(
+I'm have no expirience in windows :(<br />
