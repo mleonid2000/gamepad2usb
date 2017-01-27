@@ -1,6 +1,6 @@
 # gamepad2usb
 [ru]
-[Gamepad2usb](https://vk.com/gamepad2usb) основан на проэкте ["V-Usb"](https://www.obdev.at/products/vusb/index.html).
+[Gamepad2usb](https://vk.com/gamepad2usb) основан на проекте ["V-Usb"](https://www.obdev.at/products/vusb/index.html).
 также, ["gamepad2usb"](https://vk.com/gamepad2usb) основан ["USBJoy"](http://vusb.wikidot.com/project:usbjoy) Сергея Рюмика.
 
 Этот проэкт - простой USB джойстик.
