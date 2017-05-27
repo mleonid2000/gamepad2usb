@@ -84,20 +84,20 @@ if (bit_is_set(TIFR, OCF2))
 	gamepad2usb_data[0].buttons = 0;
 	
 	// Axes (y = 0x81, see USB Descriptors)
-	if	(axis_up)		{ gamepad2usb_data[0].y = 0x81;}	//axis_up
-	if	(axis_down)		{ gamepad2usb_data[0].y = 0x7F;}	//axis_down
-	if	(axis_left)		{ gamepad2usb_data[0].x = 0x81;}	//axis_left
+	if	(axis_up)	{ gamepad2usb_data[0].y = 0x81;}	//axis_up
+	if	(axis_down)	{ gamepad2usb_data[0].y = 0x7F;}	//axis_down
+	if	(axis_left)	{ gamepad2usb_data[0].x = 0x81;}	//axis_left
 	if	(axis_right)	{ gamepad2usb_data[0].x = 0x7F;}	//axis_right
 
 	// Buttons
 	gamepad2usb_data[0].buttons =	(btn_0	<< 0) | // button 0
-									(btn_1	<< 1) | // button 1
-									(btn_2	<< 2) | // button 2
-									(btn_3	<< 3) | // button 3
-									(btn_4	<< 4) | // button 4
-									(btn_5	<< 5) | // button 5
-									(btn_6	<< 6) | // button 6
-									(btn_7	<< 7) ; // button 7
+					(btn_1	<< 1) | // button 1
+					(btn_2	<< 2) | // button 2
+					(btn_3	<< 3) | // button 3
+					(btn_4	<< 4) | // button 4
+					(btn_5	<< 5) | // button 5
+					(btn_6	<< 6) | // button 6
+					(btn_7	<< 7) ; // button 7
 
 	//Reset autofire mode if no buttons pressed
 	if ((gamepad2usb_data[0].buttons == 0)) { holdoncounter = 0; autofire_flag = 0; }
