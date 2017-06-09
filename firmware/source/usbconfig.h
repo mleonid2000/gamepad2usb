@@ -51,7 +51,7 @@ section at the end of this file).
  * Since F_CPU should be defined to your actual clock rate anyway, you should
  * not need to modify this setting.
  */
-//#define USB_CFG_CHECK_CRC       0
+#define USB_CFG_CHECK_CRC       0
 /* Define this to 1 if you want that the driver checks integrity of incoming
  * data packets (CRC checks). CRC checks cost quite a bit of code size and are
  * currently only available for 18 MHz crystal clock. You must choose
@@ -85,7 +85,7 @@ section at the end of this file).
  * configured below) and a catch-all default interrupt-in endpoint as above.
  * You must also define USB_CFG_HAVE_INTRIN_ENDPOINT to 1 for this feature.
  */
-//#define USB_CFG_EP3_NUMBER              3
+#define USB_CFG_EP3_NUMBER              3//!
 /* If the so-called endpoint 3 is used, it can now be configured to any other
  * endpoint number (except 0) with this macro. Default if undefined is 3.
  */
@@ -101,7 +101,7 @@ section at the end of this file).
  * it is required by the standard. We have made it a config option because it
  * bloats the code considerably.
  */
-//#define USB_CFG_SUPPRESS_INTR_CODE      0
+#define USB_CFG_SUPPRESS_INTR_CODE      0//!
 /* Define this to 1 if you want to declare interrupt-in endpoints, but don't
  * want to send any data over them. If this macro is defined to 1, functions
  * usbSetInterrupt() and usbSetInterrupt3() are omitted. This is useful if
@@ -118,7 +118,7 @@ section at the end of this file).
 /* Define this to 1 if the device has its own power supply. Set it to 0 if the
  * device is powered from the USB bus.
  */
-#define USB_CFG_MAX_BUS_POWER           100
+#define USB_CFG_MAX_BUS_POWER           20//!original 50
 /* Set this variable to the maximum USB bus power consumption of your device.
  * The value is in milliamperes. [It will be divided by two since USB
  * communicates power requirements in units of 2 mA.]
@@ -145,12 +145,12 @@ section at the end of this file).
  * of the macros usbDisableAllRequests() and usbEnableAllRequests() in
  * usbdrv.h.
  */
-//#define USB_CFG_DRIVER_FLASH_PAGE       0
+#define USB_CFG_DRIVER_FLASH_PAGE       0
 /* If the device has more than 64 kBytes of flash, define this to the 64 k page
  * where the driver's constants (descriptors) are located. Or in other words:
  * Define this to 1 for boot loaders on the ATMega128.
  */
-//#define USB_CFG_LONG_TRANSFERS          0
+#define USB_CFG_LONG_TRANSFERS          0
 /* Define this to 1 if you want to send/receive blocks of more than 254 bytes
  * in a single control-in or control-out transfer. Note that the capability
  * for long transfers increases the driver size.
@@ -195,7 +195,7 @@ section at the end of this file).
  * Please note that Start Of Frame detection works only if D- is wired to the
  * interrupt, not D+. THIS IS DIFFERENT THAN MOST EXAMPLES!
  */
-//#define USB_CFG_CHECK_DATA_TOGGLING     0
+#define USB_CFG_CHECK_DATA_TOGGLING     0
 /* define this macro to 1 if you want to filter out duplicate data packets
  * sent by the host. Duplicates occur only as a consequence of communication
  * errors, when the host does not receive an ACK. Please note that you need to
@@ -203,11 +203,11 @@ section at the end of this file).
  * usbFunctionWrite(). Use the global usbCurrentDataToken and a static variable
  * for each control- and out-endpoint to check for duplicate packets.
  */
-//#define USB_CFG_HAVE_MEASURE_FRAME_LENGTH   0
+#define USB_CFG_HAVE_MEASURE_FRAME_LENGTH   0
 /* define this macro to 1 if you want the function usbMeasureFrameLength()
  * compiled in. This function can be used to calibrate the AVR's RC oscillator.
  */
-//#define USB_USE_FAST_CRC                0
+#define USB_USE_FAST_CRC                0
 /* The assembler module has two implementations for the CRC algorithm. One is
  * faster, the other is smaller. This CRC routine is only used for transmitted
  * messages where timing is not critical. The faster routine needs 31 cycles
@@ -218,10 +218,7 @@ section at the end of this file).
 
 /* -------------------------- Device Description --------------------------- */
 
-/* ------------------------------ Change it -------------------------------- */
 #define  USB_CFG_VENDOR_ID       0xc0, 0x16 //Van Ooijen Technische Informatica
-/* ------------------------------ Change it -------------------------------- */
-
 /* USB vendor ID for the device, low byte first. If you have registered your
  * own Vendor ID, define it here. Otherwise you may use one of obdev's free
  * shared VID/PID pairs. Be sure to read USB-IDs-for-free.txt for rules!
@@ -230,11 +227,7 @@ section at the end of this file).
  * with libusb: 0x16c0/0x5dc.  Use this VID/PID pair ONLY if you understand
  * the implications!
  */
-
-/* ------------------------------ Change it -------------------------------- */
 #define  USB_CFG_DEVICE_ID       0xdc, 0x27 //Joystick
-/* ------------------------------ Change it -------------------------------- */
-
 /* This is the ID of the product, low byte first. It is interpreted in the
  * scope of the vendor ID. If you have registered your own VID with usb.org
  * or if you have licensed a PID from somebody else, define it here. Otherwise
@@ -248,12 +241,8 @@ section at the end of this file).
 #define	USB_CFG_DEVICE_VERSION	0x01, 0x00
 /* Version number of the device: Minor number first, then major number.
  */
-
-/* ------------------------------ Change it -------------------------------- */
 #define	USB_CFG_VENDOR_NAME		'v', 'k', '.', 'c', 'o', 'm', '/', 'g', 'a', 'm', 'e', 'p', 'a', 'd', '2', 'u', 's', 'b'
 #define	USB_CFG_VENDOR_NAME_LEN	18
-/* ------------------------------ Change it -------------------------------- */
-
 /* These two values define the vendor name returned by the USB device. The name
  * must be given as a list of characters under single quotes. The characters
  * are interpreted as Unicode (UTF-16) entities.
@@ -262,21 +251,14 @@ section at the end of this file).
  * obdev's free shared VID/PID pair. See the file USB-IDs-for-free.txt for
  * details.
  */
-/* ------------------------------ Change it -------------------------------- */
 #define	USB_CFG_DEVICE_NAME		'v', 'k', '.', 'c', 'o', 'm', '/', 'g', 'a', 'm', 'e', 'p', 'a', 'd', '2', 'u', 's', 'b'
 #define	USB_CFG_DEVICE_NAME_LEN	18
-/* ------------------------------ Change it -------------------------------- */
-
 /* Same as above for the device name. If you don't want a device name, undefine
  * the macros. See the file USB-IDs-for-free.txt before you assign a name if
  * you use a shared VID/PID.
  */
-
-/* ------------------------------ Change it -------------------------------- */
 #define	USB_CFG_SERIAL_NUMBER	'g', 'a', 'm', 'e', 'p', 'a', 'd', '2', 'u', 's', 'b'
 #define	USB_CFG_SERIAL_NUMBER_LEN	11
-/* ------------------------------ Change it -------------------------------- */
-
 /* Same as above for the serial number. If you don't want a serial number,
  * undefine the macros.
  * It may be useful to provide the serial number through other means than at
@@ -284,13 +266,12 @@ section at the end of this file).
  * to fine tune control over USB descriptors such as the string descriptor
  * for the serial number.
  */
-// #define USB_CFG_DEVICE_CLASS        0xff    /* set to 0 if deferred to interface */
-#define USB_CFG_DEVICE_CLASS        0    /* set to 0 if deferred to interface */
+#define USB_CFG_DEVICE_CLASS        0	/* define class here if not at device level */
 #define USB_CFG_DEVICE_SUBCLASS     0
 /* See USB specification if you want to conform to an existing device class.
  * Class 0xff is "vendor specific".
  */
-#define USB_CFG_INTERFACE_CLASS     3   /* define class here if not at device level */
+#define USB_CFG_INTERFACE_CLASS     3	/* define class here if not at device level */
 #define USB_CFG_INTERFACE_SUBCLASS  0
 #define USB_CFG_INTERFACE_PROTOCOL  0
 /* See USB specification if you want to conform to an existing device class or
@@ -298,6 +279,7 @@ section at the end of this file).
  * HID class is 3, no subclass and protocol required (but may be useful!)
  * CDC class is 2, use subclass 2 and protocol 1 for ACM
  */
+/* #define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    42 */
 #define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    44
 /* Define this to the length of the HID report descriptor, if you implement
  * an HID device. Otherwise don't define it or define it to 0.
@@ -375,13 +357,14 @@ section at the end of this file).
 #define USB_CFG_DESCR_PROPS_UNKNOWN                 0
 
 
-#define usbMsgPtr_t unsigned short
-/* If usbMsgPtr_t is not defined, it defaults to 'uchar *'. We define it to
+//#define usbMsgPtr_t unsigned short
+/* If usbMsgPtr_t is not defined, it defaults to 'uchar *'. We may define it to
  * a scalar type here because gcc generates slightly shorter code for scalar
  * arithmetics than for pointer arithmetics. Remove this define for backward
  * type compatibility or define it to an 8 bit type if you use data in RAM only
  * and all RAM is below 256 bytes (tiny memory model in IAR CC).
  */
+
 
 /* ----------------------- Optional MCU Description ------------------------ */
 
