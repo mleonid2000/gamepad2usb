@@ -60,13 +60,14 @@ unsigned char autofire_counter = 0;	//Autofire pattern 2on:2off after USB send
 //AVR Initialization
 void inDecoderInit(void)
 {
-	PORTB	|=	0xFF;	DDRB	 =	0x00;	//All Pullups
-	PORTC	|=	0xFF;	DDRC	 =	0x00;	//All Pullups
+	PORTB	|=	0x1F;	DDRB	 =	0x00;	//All Pullups
+	PORTC	|=	0x1F;	DDRC	 =	0x00;	//All Pullups
 	PORTD	|=	0xFA;	DDRD	|=	0x08;	//PD0-PD2 "v-usb", other Pullups
 
 	// 8-Bit timer TC2
 	TCCR2	 =	(0 << WGM20 ) | (1 << WGM21) | ( 1 << CS22 ) | ( 1 << CS21 ) | ( 1 << CS20 ); //prescaler = 1024
-	OCR2	 =	0x96;		//Compare Register, 12.8 us timer freq = 12 Mhz
+	OCR2	 =	0x2D;		//Compare Register, 3.9254 us timer freq = 12 Mhz
+	TCNT2	 =	0xD3;
 	TIFR	|=	_BV(OCF2);	//Reset TC2 timer
 }
 
@@ -77,7 +78,9 @@ void inDecoderPoll(void)
 //Skip if less than 12.8 us
 if (bit_is_set(TIFR, OCF2))
 	{
-	TIFR |= _BV(OCF2);	//Reset TC2 timer
+	//Reset TC2 timer
+	TIFR  |= _BV(OCF2);
+	TCNT2  = 0xD3;
 
 	//Default Values
 	gamepad2usb_data[0].x = gamepad2usb_data[0].y = 0;
@@ -110,7 +113,7 @@ if (bit_is_set(TIFR, OCF2))
 		at the moment of activation autofire.
 	*/
 
-	if ((holdoncounter >= 0x0020) && (autofire_flag == 0)) //hold on time around 1 sec
+	if ((holdoncounter >= 0x0040) && (autofire_flag == 0)) //hold on time around 1-2 sec
 		{
 			autofire_flag = 1; // Activate Autofire Mode
 			holdoncounter = 0; // Reset Autofire holdon counter
@@ -120,13 +123,7 @@ if (bit_is_set(TIFR, OCF2))
 	if ((autofire_flag == 1) && (autofire_counter >= 2))
 		{
 			// Autofire all buttons except btn_0
-			if (gamepad2usb_data[0].buttons	&	0x02)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x02));
-			if (gamepad2usb_data[0].buttons	&	0x04)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x04));
-			if (gamepad2usb_data[0].buttons	&	0x08)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x08));
-			if (gamepad2usb_data[0].buttons	&	0x10)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x10));
-			if (gamepad2usb_data[0].buttons	&	0x20)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x20));
-			if (gamepad2usb_data[0].buttons	&	0x40)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x40));
-			if (gamepad2usb_data[0].buttons	&	0x80)	gamepad2usb_data[0].buttons ^= 	((gamepad2usb_data_turbo[0].buttons & 0x80));
+			gamepad2usb_data[0].buttons ^= 	(gamepad2usb_data_turbo[0].buttons & (gamepad2usb_data[0].buttons & ~1));
 		}
 	}
 }
