@@ -12,19 +12,20 @@
 
 Конфигурация контактов для atmega8a-au в tqfp32 корпусе:<br />
    -------Axes---------<br />
-   PC2(25) - Left Axis.<br />
-   PC3(26) - UP Axis.<br />
-   PC4(27) - Right Axis.<br />
-   PC5(28) - Down Axis.<br />
+   PC2(25) - UP Axis.<br />
+   PC4(27) - Down Axis.<br />
+   PC3(26) - Left Axis.<br />
+   PC5(28) - Right Axis.<br />
+
    -------Buttons------<br />
    PD5(09) - button_0.<br />
    PD6(10) - button_1.<br />
    PD7(11) - button_2.<br />
    PB0(12) - button_3.<br />
-   PB0(13) - button_4.<br />
-   PB0(14) - button_5.<br />
-   PB0(15) - button_6.<br />
-   PB0(16) - button_7.<br />
+   PB1(13) - button_4.<br />
+   PB2(14) - button_5.<br />
+   PB3(15) - button_6.<br />
+   PB4(16) - button_7.<br />
 
 [en]
 [Gamepad2usb](https://vk.com/gamepad2usb) based on ["V-Usb"](https://www.obdev.at/products/vusb/index.html) project.
