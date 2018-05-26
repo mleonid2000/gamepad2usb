@@ -97,7 +97,7 @@ unsigned char usbFunctionSetup(unsigned char data[8])
 			// Return the report if host requests it without USB interrupt
 			case USBRQ_HID_GET_REPORT: 
 				// wValue: ReportType (highbyte), ReportID (lowbyte)
-				usbMsgPtr = *usbBuildReport(rq->wValue.bytes[0]);
+				usbMsgPtr = usbBuildReport(rq->wValue.bytes[0]);
 				return sizeof(usbReport);
 				
 			// case USBRQ_HID_GET_IDLE: // send idle rate to PC as required by spec

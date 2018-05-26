@@ -30,20 +30,20 @@
 //Change PIN's - axis or buttons. It is simple!!!
 //-----------------------------------------------------------------------------
 // PIN's - Axe's
-#define axis_up		(bit_is_clear(PINC, PC5) ? 1 : 0)	//Axis_UP
+#define axis_up		(bit_is_clear(PINC, PC2) ? 1 : 0)	//Axis_UP
 #define axis_down	(bit_is_clear(PINC, PC4) ? 1 : 0)	//Axis_Down
 #define axis_left	(bit_is_clear(PINC, PC3) ? 1 : 0)	//Axis_Left
-#define axis_right	(bit_is_clear(PINC, PC2) ? 1 : 0)	//Axis_Right
+#define axis_right	(bit_is_clear(PINC, PC5) ? 1 : 0)	//Axis_Right
 
 // PIN's - Button's
-#define btn_0		(bit_is_clear(PINB, PB0) ? 1 : 0)	//button_0
-#define btn_1		(bit_is_clear(PINB, PB1) ? 1 : 0)	//button_1
-#define btn_2		(bit_is_clear(PINB, PB2) ? 1 : 0)	//button_2
-#define btn_3		(bit_is_clear(PINB, PB3) ? 1 : 0)	//button_3
-#define btn_4		(bit_is_clear(PINB, PB4) ? 1 : 0)	//button_4
-#define btn_5		(bit_is_clear(PINB, PB5) ? 1 : 0)	//button_5
-#define btn_6		(bit_is_clear(PINC, PC1) ? 1 : 0)	//button_6
-#define btn_7		(bit_is_clear(PINC, PC0) ? 1 : 0)	//button_7
+#define btn_0		(bit_is_clear(PIND, PD5) ? 1 : 0)	//button_0
+#define btn_1		(bit_is_clear(PIND, PD6) ? 1 : 0)	//button_1
+#define btn_2		(bit_is_clear(PIND, PD7) ? 1 : 0)	//button_2
+#define btn_3		(bit_is_clear(PINB, PB0) ? 1 : 0)	//button_3
+#define btn_4		(bit_is_clear(PINB, PB1) ? 1 : 0)	//button_4
+#define btn_5		(bit_is_clear(PINB, PB2) ? 1 : 0)	//button_5
+#define btn_6		(bit_is_clear(PINB, PB3) ? 1 : 0)	//button_6
+#define btn_7		(bit_is_clear(PINB, PB4) ? 1 : 0)	//button_7
 //-----------------------------------------------------------------------------
 
 //=============================================================================
